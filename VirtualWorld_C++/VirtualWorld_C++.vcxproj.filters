@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\WORLD">
+      <UniqueIdentifier>{054b7526-e819-4e56-9675-58799ef79ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WORLD\ORGANISMS">
+      <UniqueIdentifier>{d79070af-a822-4c14-8aec-fdc758a90e91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WORLD">
+      <UniqueIdentifier>{b0f80cc2-8a96-4b6f-bdc9-522d71126df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WORLD\ORGANISMS">
+      <UniqueIdentifier>{4989a22b-5098-45df-b0b5-cf073a121566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WORLD\ORGANISMS\ANIMALS">
+      <UniqueIdentifier>{4885810f-2ffa-49eb-8dd9-bad5d36f2aea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WORLD\ORGANISMS\PLANTS">
+      <UniqueIdentifier>{fee33863-c4cd-40f1-a63f-422cc50ec43b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WORLD\ORGANISMS\ANIMALS">
+      <UniqueIdentifier>{3b75e58c-1bfd-4364-82c1-c9433fdca531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WORLD\ORGANISMS\PLANTS">
+      <UniqueIdentifier>{4b50a652-bb77-44e0-b7eb-b74a574f51ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WORLD\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Organism.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files\WORLD</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files\WORLD</Filter>
+    </ClCompile>
+    <ClCompile Include="Animal.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sheep.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Plant.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files\WORLD</Filter>
+    </ClCompile>
+    <ClCompile Include="Wolf.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Turtle.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Antelope.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Fox.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files\WORLD</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="DeadlyNightshade.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Organism.h">
+      <Filter>Header Files\WORLD\ORGANISMS</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files\WORLD</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files\WORLD</Filter>
+    </ClInclude>
+    <ClInclude Include="AllAnimals.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Animal.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sheep.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Wolf.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Turtle.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimalStats.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Antelope.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Fox.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="AllPlants.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Grass.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantStats.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files\WORLD</Filter>
+    </ClInclude>
+    <ClInclude Include="DeadlyNightshade.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
