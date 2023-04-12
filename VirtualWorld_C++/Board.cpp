@@ -38,6 +38,42 @@ bool Board::isPointInBoundaries(Point pos) const {
 	else
 		return true;
 }
+
+Point Board::generateRandomNeighboringPosition(const bool needFreePosition, int range, Organism *organism) const {
+	int move;
+	unsigned short control = 0b0000;
+	Point newPos;
+	do {
+		move = rand() % DIRECTIONS_NUM;
+		newPos.x = organism->getPos().x;
+		newPos.y = organism->getPos().y;
+		switch (move) {
+		case directions::UP:
+			newPos.move(0, -1, range);
+			control = control | 0b1000;
+			break;
+		case directions::RIGHT:
+			newPos.move(1, 0, range);
+			control = control | 0b0100;
+			break;
+		case directions::DOWN:
+			newPos.move(0, 1, range);
+			control = control | 0b0010;
+			break;
+		case directions::LEFT:
+			newPos.move(-1, 0, range);
+			control = control | 0b0001;
+			break;
+		}
+		if (control == 0b1111) {
+			newPos.x = UNDEFINED;
+			newPos.y = UNDEFINED;
+			return newPos;
+		}
+	} while (!this->isPointInBoundaries(newPos) ||
+		(needFreePosition == true && this->getBoardField(newPos) != nullptr));
+	return newPos;
+}
 Board::Board(): sizeX(DEFAULT_BOARD_SIZE_X), sizeY(DEFAULT_BOARD_SIZE_Y) {
 	buildBoard();
 }

@@ -12,7 +12,7 @@ Organism* Fox::createChild(Point childPos) const {
 	return animal;
 }
 void Fox::action() {
-	this->setNextPos(this->generateNeighboringPositions(false, this->getMoveDist()));
+	this->setNextPos(this->getWorld()->getBoard()->generateRandomNeighboringPosition(false, this->getMoveDist(), this));
 
 	Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
 	if (nextFieldVal == nullptr)

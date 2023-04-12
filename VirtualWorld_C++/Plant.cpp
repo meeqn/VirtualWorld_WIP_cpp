@@ -17,7 +17,7 @@ int Plant::getSewingDist() {
 	return this->sewingDist;
 }
 void Plant::action() {
- 	Point offspringPos = this->generateNeighboringPositions(1, this->getSewingDist());
+ 	Point offspringPos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(1, this->getSewingDist(), this);
 	int prob = (rand() % 100) + 1;
 	if (prob > 80) {
 		if (!offspringPos.isUndefined()) {

@@ -5,8 +5,6 @@ class World;
 class Animal;
 class Organism {
 #define STARTING_AGE 0
-#define DIRECTIONS_NUM 4
-enum directions { UP, RIGHT, DOWN, LEFT }; //maybe move directions to world
 private:
 	char symbol;
 	int age = STARTING_AGE,initiative, strength;
@@ -47,6 +45,5 @@ public:
 	void giveStats() const;
 	bool isActive() const;
 	bool isDead() const;
-	Point generateNeighboringPositions(const bool needFreePosition, int range) const;
 	friend class World;
 };

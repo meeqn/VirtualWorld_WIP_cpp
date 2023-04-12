@@ -18,7 +18,7 @@ void Animal::setMoveDist(int dist) {
 }
 
 void Animal::action() {
-	this->setNextPos(this->generateNeighboringPositions(false, this->getMoveDist()));
+	this->setNextPos(this->getWorld()->getBoard()->generateRandomNeighboringPosition(false, this->getMoveDist(), this));
 
 	Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
 	if (nextFieldVal == nullptr)
@@ -31,9 +31,9 @@ void Animal::action() {
 
 void Animal::breed(Animal* secondAnimal) {
 	Point childPos;
-	childPos = this->generateNeighboringPositions(true, 1);
+	childPos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(true, 1, this);
 	if (childPos.isUndefined())
-		childPos = secondAnimal->generateNeighboringPositions(true, 1);
+		childPos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(true, 1, secondAnimal);
 	if (!childPos.isUndefined()) {
 		Organism* offspring = createChild(childPos);
 		this->getWorld()->addOrganismToWorldInactive(offspring);

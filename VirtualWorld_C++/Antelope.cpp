@@ -19,7 +19,7 @@ void Antelope::collision(Animal* invader) {
 		World* world = this->getWorld();
 		int prob = (rand() % 100) + 1;
 		if (prob >= 50) {
-			Point escapePos = this->generateNeighboringPositions(true, 1);
+			Point escapePos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(true, 1, this);
 			if (!escapePos.isUndefined()) {
 				this->setNextPos(escapePos);
 				world->moveAnimalToNextPosition(this);
