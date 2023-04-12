@@ -4,8 +4,8 @@ Grass::Grass(int posX, int posY) {
 	this->setPlant(GRASS_STRENGTH, posX, posY, GRASS_SYMBOL);
 }
 Organism* Grass::createChild(Point childPos) const {
-	Organism* animal = new Grass(childPos.x, childPos.y);;
-	return animal;
+	Organism* child = new Grass(childPos.x, childPos.y);;
+	return child;
 }
 void Grass::Write(std::ostream& out) const {
 	std::cout << "a Grass ";

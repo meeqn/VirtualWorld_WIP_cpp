@@ -9,7 +9,7 @@ class Board {
 #define OUT_OF_BOUNDS -1
 #define BLANK_MAP_SPACE '~'
 #define DIRECTIONS_NUM 4
-enum directions { UP, RIGHT, DOWN, LEFT }; //maybe move directions to world
+enum directions { UP, RIGHT, DOWN, LEFT };
 private:
 	const int sizeX, sizeY;
 	Organism*** boardFields;

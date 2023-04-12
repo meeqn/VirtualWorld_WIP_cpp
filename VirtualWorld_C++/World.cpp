@@ -1,5 +1,6 @@
 #include "World.h"
 #include "AnimalStats.h"
+#include "PlantStats.h"
 int World::getSizeX() const {
 	return this->board->sizeX;
 }
@@ -60,6 +61,7 @@ void World::drawTheSymbolsDictionary() const{
 	printf("ANIMALS:\n");
 	printf("\t %c - sheep  %c - wolf  %c - turtle \n \t %c - antelope %c - fox \n", SHEEP_SYMBOL, WOLF_SYMBOL, TURTLE_SYMBOL, ANTELOPE_SYMBOL, FOX_SYMBOL);
 	printf("PLANTS:\n");
+	printf("\t %c - grass  %c - dandelion %c - guarana \n \t %c - deadly nightshade %c - sosnowski's hogweed \n", GRASS_SYMBOL, DANDELION_SYMBOL, GUARANA_SYMBOL, DEADLY_NIGHTSHADE_SYMBOL, SOSNOWSKI_SYMBOL);
 }
 
 //insertion sort first - initiative, then - strength

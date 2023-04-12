@@ -26,7 +26,6 @@ protected:
 	void setPos(int newPosX, int newPosY);
 	void setPos(Point newPos);
 	void setInitiative(int newInitiative);
-	void setStrength(int newStrength);
 	void activate();
 	void deactivate();
 	void makeAlive();
@@ -36,6 +35,7 @@ protected:
 
 public:
 	virtual void collision(Animal* invader) = 0;
+	void setStrength(int newStrength);
 	World* getWorld() const;
 	char getSymbol() const;
 	int getAge() const;

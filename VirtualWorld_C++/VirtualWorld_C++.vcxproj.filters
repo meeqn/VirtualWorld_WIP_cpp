@@ -81,6 +81,15 @@
     <ClCompile Include="DeadlyNightshade.cpp">
       <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
     </ClCompile>
+    <ClCompile Include="Sosnowski.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Gaurana.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Dandelion.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Organism.h">
@@ -132,6 +141,15 @@
       <Filter>Header Files\WORLD</Filter>
     </ClInclude>
     <ClInclude Include="DeadlyNightshade.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sosnowski.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Dandelion.h">
+      <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Guarana.h">
       <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
     </ClInclude>
   </ItemGroup>

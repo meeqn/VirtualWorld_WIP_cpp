@@ -10,8 +10,6 @@
 #define q 113
 #define STARTING_STATE '\n'
 using namespace std;
-//TODO: IMPROVE CODE IN ANTELOPE AND TURTLE/ remove redundant code
-//add 'Point' structure for coordinates and as return for GenerateNextPositions
 
 vector <Organism*> populateStart() {
 	vector <Organism*> orgVec;
@@ -27,6 +25,10 @@ vector <Organism*> populateStart() {
 	orgVec.push_back(new DeadlyNightshade(7, 5));
 	orgVec.push_back(new DeadlyNightshade(7, 6));
 	orgVec.push_back(new DeadlyNightshade(7, 7));
+	orgVec.push_back(new Sosnowski(3, 7));
+	orgVec.push_back(new Sosnowski(0, 7));
+	orgVec.push_back(new Dandelion(2, 2));
+	orgVec.push_back(new Guarana(9, 9));
 	return orgVec;
 }
 

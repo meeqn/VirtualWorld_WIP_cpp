@@ -26,7 +26,6 @@ int Organism::getInitiative() const {
 int Organism::getStrength() const {
 	return this->strength;
 }
-//modified
 void Organism::setWorld(World* newWorld) {
 	this->world=newWorld;
 };

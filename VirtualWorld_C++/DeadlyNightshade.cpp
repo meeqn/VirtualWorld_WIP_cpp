@@ -5,8 +5,8 @@ DeadlyNightshade::DeadlyNightshade(int posX, int posY) {
 	this->setPlant(DEADLY_NIGHTSHADE_STRENGTH, posX, posY, DEADLY_NIGHTSHADE_SYMBOL);
 }
 Organism* DeadlyNightshade::createChild(Point childPos) const {
-	Organism* animal = new DeadlyNightshade(childPos.x, childPos.y);;
-	return animal;
+	Organism* child = new DeadlyNightshade(childPos.x, childPos.y);;
+	return child;
 }
 void DeadlyNightshade::collision(Animal * invader) {
 	std::cout << *invader << " ate " << *this << " and died" << std::endl;
