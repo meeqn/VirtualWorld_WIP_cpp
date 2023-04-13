@@ -74,6 +74,17 @@ Point Board::generateRandomNeighboringPosition(const bool needFreePosition, int 
 		(needFreePosition == true && this->getBoardField(newPos) != nullptr));
 	return newPos;
 }
+void Board::drawTheBoard() const {
+	for (int i = 0; i < this->sizeY; i++) {
+		for (int j = 0; j < this->sizeX; j++) {
+			if (this->getBoardField(Point(j, i)) != nullptr)
+				this->getBoardField(Point(j, i))->draw();
+			else
+				printf("%c", BLANK_MAP_SPACE);
+		}
+		printf("\n");
+	}
+}
 
 Board::Board(): sizeX(DEFAULT_BOARD_SIZE_X), sizeY(DEFAULT_BOARD_SIZE_Y) {
 	buildBoard();

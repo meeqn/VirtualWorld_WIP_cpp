@@ -11,8 +11,7 @@ Organism* Sheep::createChild(Point childPos) const {
 	return animal;
 }
 void Sheep::Write(std::ostream& out) const {
-	std::cout << "a Sheep ";
-	this->giveStats();
+	out << "a Sheep " << this->giveStats();
 }
 Sheep::~Sheep() {
 	std::cout << "Destroyed a Sheep ";

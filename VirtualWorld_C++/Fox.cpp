@@ -3,9 +3,6 @@
 
 Fox::Fox(int posX, int posY) {
 	this->setAnimal(FOX_INITIATIVE, FOX_STRENGTH, posX, posY, FOX_SYMBOL, FOX_MOVE_DIST);
-	//std::cout << "Created a Fox ";
-	//->giveStats();
-	//std::cout << "\n";
 }
 Organism* Fox::createChild(Point childPos) const {
 	Organism* animal = new Fox(childPos.x, childPos.y);;
@@ -23,8 +20,7 @@ void Fox::action() {
 	this->deactivate();
 }
 void Fox::Write(std::ostream& out) const {
-	std::cout << "a Fox ";
-	this->giveStats();
+	out << "a Fox " << this->giveStats();
 }
 Fox::~Fox() {
 	std::cout << "Destroyed a Fox ";

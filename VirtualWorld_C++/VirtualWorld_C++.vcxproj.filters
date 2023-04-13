@@ -90,6 +90,12 @@
     <ClCompile Include="Dandelion.cpp">
       <Filter>Source Files\WORLD\ORGANISMS\PLANTS</Filter>
     </ClCompile>
+    <ClCompile Include="Human.cpp">
+      <Filter>Source Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClCompile>
+    <ClCompile Include="Speaker.cpp">
+      <Filter>Source Files\WORLD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Organism.h">
@@ -151,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="Guarana.h">
       <Filter>Header Files\WORLD\ORGANISMS\PLANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Human.h">
+      <Filter>Header Files\WORLD\ORGANISMS\ANIMALS</Filter>
+    </ClInclude>
+    <ClInclude Include="Speaker.h">
+      <Filter>Header Files\WORLD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

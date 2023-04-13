@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include "Point.h"
 class World;
 class Animal;
@@ -14,9 +15,9 @@ private:
 
 protected:
 	virtual void Write(std::ostream& out) const = 0;
+	//create toString??vvvv
 	friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 	virtual Organism* createChild(Point childPos) const = 0;
-	void draw();
 
 	virtual void action() = 0;
 
@@ -29,7 +30,7 @@ protected:
 	void activate();
 	void deactivate();
 	void makeAlive();
-	void death();
+	virtual void death();
 	void Ageing();
 	virtual ~Organism();
 
@@ -42,8 +43,9 @@ public:
 	Point getPos() const;
 	int getInitiative() const;
 	int getStrength() const;
-	void giveStats() const;
+	std::string giveStats() const;
 	bool isActive() const;
 	bool isDead() const;
+	void draw() const;
 	friend class World;
 };

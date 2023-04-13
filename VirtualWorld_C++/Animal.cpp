@@ -37,8 +37,9 @@ void Animal::breed(Animal* secondAnimal) {
 	if (!childPos.isUndefined()) {
 		Organism* offspring = createChild(childPos);
 		this->getWorld()->addOrganismToWorldInactive(offspring);
-		std::cout << *offspring << " was born to " << *this << " and " << *secondAnimal << "\n";
 		this->deactivate();//if organism is used for breeding, it loses it's turn (if it hasn't moved yet) to prevent board filling snowball
+
+		this->getWorld()->sp->addBirthMessage(this, secondAnimal, (Animal*)offspring);
 	}
 
 }
@@ -47,11 +48,11 @@ void Animal::animalGetsAttacked(Animal * invader) {
 	if (this->getStrength() < invader->getStrength()) { //attacked and loses fight
 		world->moveOrganismToGraveyard(this);
 		world->moveAnimalToNextPosition(invader);
-		std::cout << *invader << " killed " << *this << "\n";
+		this->getWorld()->sp->addKillMessage(invader, this);
 	}
 	else { //defends itself
 		world->moveOrganismToGraveyard(invader);
-		std::cout << *this << " killed " << *invader << "\n";
+		this->getWorld()->sp->addKillMessage(this, invader);
 	}
 }
 void Animal::collision(Animal* invader) {

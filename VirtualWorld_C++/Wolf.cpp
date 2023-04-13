@@ -9,8 +9,7 @@ Wolf::Wolf(int posX, int posY) {
 	//std::cout << "\n";
 }
 void Wolf::Write(std::ostream& out) const {
-	std::cout << "a Wolf ";
-	this->giveStats();
+	out << "a Wolf " << this->giveStats();
 }
 Organism* Wolf::createChild(Point childPos) const {
 	Organism* animal = new Wolf(childPos.x, childPos.y);

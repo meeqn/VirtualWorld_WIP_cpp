@@ -9,13 +9,12 @@ Organism* DeadlyNightshade::createChild(Point childPos) const {
 	return child;
 }
 void DeadlyNightshade::collision(Animal * invader) {
-	std::cout << *invader << " ate " << *this << " and died" << std::endl;
+	this->getWorld()->sp->addKillMessage(this, invader);
 	this->getWorld()->moveOrganismToGraveyard(this);
 	this->getWorld()->moveOrganismToGraveyard(invader);
 }
 void DeadlyNightshade::Write(std::ostream& out) const {
-	std::cout << "a Deadly Nightshade ";
-	this->giveStats();
+	out << "a Deadly Nightshade " << this->giveStats();
 }
 DeadlyNightshade::~DeadlyNightshade() {
 }

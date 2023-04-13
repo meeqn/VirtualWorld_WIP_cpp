@@ -8,8 +8,7 @@ Organism* Grass::createChild(Point childPos) const {
 	return child;
 }
 void Grass::Write(std::ostream& out) const {
-	std::cout << "a Grass ";
-	this->giveStats();
+	out << "a Grass " << this->giveStats();
 }
 Grass::~Grass() {
 }

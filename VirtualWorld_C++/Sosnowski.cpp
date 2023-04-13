@@ -22,15 +22,16 @@ void Sosnowski::action() {
 		point.move(x[i], y[i], 1);
 		if (this->getWorld()->getBoard()->isPointInBoundaries(point)) {
 			soonToBeDead = this->getWorld()->getBoard()->getBoardField(point);
-			if (soonToBeDead != nullptr)
+			if (soonToBeDead != nullptr) {
 				this->getWorld()->moveOrganismToGraveyard(soonToBeDead);
+				this->getWorld()->sp->addKillMessage(this, soonToBeDead);
+			}
 		}
 		point.move(-x[i], -y[i], 1);
 	}
 }
 void Sosnowski::Write(std::ostream& out) const {
-	std::cout << "a Sosnowski's Hogweed ";
-	this->giveStats();
+	out << "a Sosnowski's Hogweed " << this->giveStats();
 }
 Sosnowski::~Sosnowski() {
 }

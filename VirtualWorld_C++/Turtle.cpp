@@ -30,8 +30,7 @@ void Turtle::collision(Animal* invader) {
 	}
 }
 void Turtle::Write(std::ostream& out) const {
-	std::cout << "a Turtle ";
-	this->giveStats();
+	out << "a Turtle " << this->giveStats();
 }
 Turtle::~Turtle() {
 	std::cout << "Destroyed a Turtle ";

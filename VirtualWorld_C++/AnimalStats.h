@@ -1,6 +1,10 @@
 #pragma once
 //ANIMALS****************
 #define STANDARD_MOVE_DIST 1
+//HUMAN
+#define HUMAN_STRENGTH 5
+#define HUMAN_SYMBOL 'H'
+#define HUMAN_MOVE_DIST STANDARD_MOVE_DIST
 //SHEEP
 #define SHEEP_INITIATIVE 4
 #define SHEEP_STRENGTH 4

@@ -1,12 +1,14 @@
 #include "Organism.h"
 #include "World.h"
+
 std::ostream& operator<<(std::ostream& os, const Organism& organism) {
 	organism.Write(os);
 	return os;
 }
-
-void Organism::giveStats() const {
-	std::cout << "I:" << this->getInitiative() << " S:" << this->getStrength() << " position: [" << this->getPos().x << "," << this->getPos().y << "]";
+std::string Organism::giveStats() const {
+	std::ostringstream oss;
+	oss << "I:" << this->getInitiative() << " S:" << this->getStrength() << " position: [" << this->getPos().x << "," << this->getPos().y << "]";
+	return oss.str();
 }
 World* Organism::getWorld() const {
 	return this->world;
@@ -47,7 +49,7 @@ void Organism::setInitiative(int newInitiative) {
 void Organism::setStrength(int newStrength) {
 	this->strength = newStrength;
 }
-void Organism::draw() {
+void Organism::draw() const{
 	printf("%c", this->getSymbol());
 }
 

@@ -1,14 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <conio.h>
 #include "World.h"
 #include "AllAnimals.h"
 #include "AllPlants.h"
-#define SPACE 32
-#define ESC 27
-#define q 113
-#define STARTING_STATE '\n'
 using namespace std;
 
 vector <Organism*> populateStart() {
@@ -33,37 +28,10 @@ vector <Organism*> populateStart() {
 }
 
 int main() {
-	srand(time(NULL));
-	bool gameView = 1, exit = false;
-	char state = STARTING_STATE;
-
-	World* braveNewWorld = new World(20, 20, populateStart());
-	braveNewWorld->drawTheBoard();
-	do {
-		state = _getch();\
-
-		switch ((int)state) {
-		case SPACE:
-			if (gameView == 1) {
-				braveNewWorld->nextTurn();
-				braveNewWorld->drawTheBoard();
-			}
-			break;
-		case q:
-			if (!gameView) {
-				system("CLS");
-				braveNewWorld->drawTheBoard();
-			}
-			else {
-				braveNewWorld->drawTheSymbolsDictionary();
-			}
-			gameView = !gameView;
-			break;
-		case ESC:
-			exit = true;
-			break;
-		}
-	} while (!exit);
-	delete braveNewWorld;
+	World braveNewWorld(20, 20, populateStart());
+	braveNewWorld.addPlayer(new Human(5, 5));
+	//todo saving/loading
+	//todo maybe namespaces for defines
+	braveNewWorld.startSimulation();
 	return 0;
 }

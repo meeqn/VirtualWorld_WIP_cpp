@@ -14,8 +14,7 @@ void Dandelion::action() {
 	}
 }
 void Dandelion::Write(std::ostream& out) const {
-	std::cout << "a Dandelion ";
-	this->giveStats();
+	out << "a Dandelion " << this->giveStats();
 }
 Dandelion::~Dandelion() {
 }

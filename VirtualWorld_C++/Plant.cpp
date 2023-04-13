@@ -21,14 +21,23 @@ void Plant::action() {
 	int prob = (rand() % 100) + 1;
 	if (prob > 80) {
 		if (!offspringPos.isUndefined()) {
-			this->getWorld()->addOrganismToWorldInactive(this->createChild(offspringPos));
+			Organism* sapling = this->createChild(offspringPos);
+			this->getWorld()->addOrganismToWorldInactive(sapling);
+			//this->getWorld()->sp->addBirthMessage(this, (Plant*)sapling);
 		}
 	}
 }
 void Plant::collision(Animal* invader) {
-	this->getWorld()->moveOrganismToGraveyard(this);
-	this->getWorld()->moveAnimalToNextPosition(invader);
-	std::cout << *invader << " has eaten " << *this << "\n";
+	World* world = this->getWorld();
+	if (this->getStrength() < invader->getStrength()) { //attacked and loses fight
+		world->moveOrganismToGraveyard(this);
+		world->moveAnimalToNextPosition(invader);
+		this->getWorld()->sp->addKillMessage(invader, this);
+	}
+	else { //defends itself
+		world->moveOrganismToGraveyard(invader);
+		this->getWorld()->sp->addKillMessage(this, invader);
+	}
 }
 Plant::~Plant() {
 

@@ -13,8 +13,7 @@ void Guarana::collision(Animal* invader) {
 	invader->setStrength(invader->getStrength() + 3);
 }
 void Guarana::Write(std::ostream& out) const {
-	std::cout << "Guarana ";
-	this->giveStats();
+	out << "a Guarana " << this->giveStats();
 }
 Guarana::~Guarana() {
 }
