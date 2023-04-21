@@ -1,11 +1,12 @@
 #include "Sosnowski.h"
 #include "World.h"
-
+using namespace boardConsts;
+using namespace sosnowskiStats;
 Sosnowski::Sosnowski(int posX, int posY) {
-	this->setPlant(SOSNOWSKI_STRENGTH, posX, posY, SOSNOWSKI_SYMBOL);
+	this->setPlant(STRENGTH, posX, posY, SYMBOL);
 }
 Organism* Sosnowski::createChild(Point childPos) const {
-	Organism* child = new Sosnowski(childPos.x, childPos.y);;
+	Organism* child = static_cast<Organism*>(new Sosnowski(childPos.x, childPos.y));
 	return child;
 }
 void Sosnowski::collision(Animal* invader) {

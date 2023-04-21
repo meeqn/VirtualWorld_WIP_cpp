@@ -1,5 +1,7 @@
 #include "Animal.h"
 #include "World.h"
+#include "boardConsts.h"
+using namespace boardConsts;
 Point Animal::getNextPos() const {
 	return this->nextPos;
 }
@@ -39,7 +41,7 @@ void Animal::breed(Animal* secondAnimal) {
 		this->getWorld()->addOrganismToWorldInactive(offspring);
 		this->deactivate();//if organism is used for breeding, it loses it's turn (if it hasn't moved yet) to prevent board filling snowball
 
-		this->getWorld()->sp->addBirthMessage(this, secondAnimal, (Animal*)offspring);
+		this->getWorld()->sp->addBirthMessage(this, secondAnimal, dynamic_cast<Animal*>(offspring));
 	}
 
 }

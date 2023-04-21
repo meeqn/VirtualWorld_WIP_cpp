@@ -1,20 +1,26 @@
 #pragma once
-//PLANTS*************
-#define PLANT_INITIATIVE 0
-#define SOWING_DISTANCE 1
-//GRASS
-#define GRASS_STRENGTH 0
-#define GRASS_SYMBOL '#'
-//DEADLY NIGHTSHADE
-#define DEADLY_NIGHTSHADE_STRENGTH 99
-#define DEADLY_NIGHTSHADE_SYMBOL 'X'
-//SOSNOWSKI'S HOGWEED
-#define SOSNOWSKI_STRENGTH 10
-#define SOSNOWSKI_SYMBOL 'T'
-//GUARANA
-#define GUARANA_STRENGTH 0
-#define GUARANA_SYMBOL 'G'
-//DANDELION
-#define DANDELION_STRENGTH 0
-#define DANDELION_SYMBOL '*'
-//TODO DODAÆ DO S£OWNIKA
+namespace plantStats {
+	const int PLANT_INITIATIVE = 0;
+	const int SOWING_DISTANCE = 1;
+
+	namespace grassStats {
+		const int STRENGTH = 0;
+		const char SYMBOL = '#';
+	}
+	namespace deadlyNightshadeStats {
+		const int STRENGTH = 99;
+		const char SYMBOL = 'X';
+	}
+	namespace sosnowskiStats {
+		const int STRENGTH = 10;
+		const char SYMBOL = 'T';
+	}
+	namespace guaranaStats {
+		const int STRENGTH = 0;
+		const char SYMBOL = 'G';
+	}
+	namespace dandelionStats {
+		const int STRENGTH = 0;
+		const char SYMBOL = '*';
+	}
+}

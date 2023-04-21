@@ -164,5 +164,11 @@
     <ClInclude Include="Speaker.h">
       <Filter>Header Files\WORLD</Filter>
     </ClInclude>
+    <ClInclude Include="Buttons.h">
+      <Filter>Header Files\WORLD</Filter>
+    </ClInclude>
+    <ClInclude Include="boardConsts.h">
+      <Filter>Header Files\WORLD</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

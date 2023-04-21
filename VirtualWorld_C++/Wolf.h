@@ -1,6 +1,5 @@
 #pragma once
 #include "Animal.h"
-#include "AnimalStats.h"
 class Wolf : public Animal {
 protected:
 	virtual void Write(std::ostream& out) const override;

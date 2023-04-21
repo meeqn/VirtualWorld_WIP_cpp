@@ -1,5 +1,4 @@
 #pragma once
-#define UNDEFINED -1
 struct Point
 {
 public:

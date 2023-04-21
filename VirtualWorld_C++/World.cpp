@@ -5,10 +5,8 @@
 #include "Speaker.h"
 #include "AnimalStats.h"
 #include "PlantStats.h"
-#define SPACE 32
-#define ESC 27
-#define q 113
-#define r 114
+#include "buttons.h"
+using namespace buttons;
 int World::getSizeX() const {
 	return this->board->sizeX;
 }
@@ -70,9 +68,9 @@ void World::drawTheSymbolsDictionary() const{
 	system("CLS");
 	printf("q - return \t esc - quit\n\n");
 	printf("ANIMALS:\n");
-	printf("\t %c - sheep  %c - wolf  %c - turtle \n \t %c - antelope %c - fox \n", SHEEP_SYMBOL, WOLF_SYMBOL, TURTLE_SYMBOL, ANTELOPE_SYMBOL, FOX_SYMBOL);
+	printf("\t %c - sheep  %c - wolf  %c - turtle \n \t %c - antelope %c - fox \n", sheepStats::SYMBOL, wolfStats::SYMBOL, turtleStats::SYMBOL, antelopeStats::SYMBOL, foxStats::SYMBOL);
 	printf("PLANTS:\n");
-	printf("\t %c - grass  %c - dandelion %c - guarana \n \t %c - deadly nightshade %c - sosnowski's hogweed \n", GRASS_SYMBOL, DANDELION_SYMBOL, GUARANA_SYMBOL, DEADLY_NIGHTSHADE_SYMBOL, SOSNOWSKI_SYMBOL);
+	printf("\t %c - grass  %c - dandelion %c - guarana \n \t %c - deadly nightshade %c - sosnowski's hogweed \n", grassStats::SYMBOL, dandelionStats::SYMBOL, guaranaStats::SYMBOL, deadlyNightshadeStats::SYMBOL, sosnowskiStats::SYMBOL);
 }
 
 //insertion sort first - initiative, then - strength
@@ -102,6 +100,7 @@ void World::nextTurn() { //todo human action separately
 			this->player = nullptr;
 		}
 		else {
+			printf("Your move! \n");
 			this->player->action();
 			system("CLS");
 			this->drawTheState();

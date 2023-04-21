@@ -1,13 +1,13 @@
 #pragma once
 #include "Organism.h"
-#define DEFAULT_MOVE_DIST 1
+#include "AnimalStats.h"
+using namespace animalStats;
 class Animal : public Organism{
 private:
 	Point nextPos;
-	int moveDist = DEFAULT_MOVE_DIST;
-	void setMoveDist(int dist);
-
+	int moveDist = STANDARD_MOVE_DIST;
 protected:
+	void setMoveDist(int dist);
 	void setNextPos(Point newPos);
 	void setNextPos(int newPosX, int newPosY);
 	virtual void Write(std::ostream& out) const = 0;
@@ -16,7 +16,6 @@ protected:
 	virtual void breed(Animal* secondAnimal);
 	virtual ~Animal() override;
 	void animalGetsAttacked(Animal *invader);
-
 public:
 	virtual void collision(Animal* invader) override;
 	Point getNextPos() const;

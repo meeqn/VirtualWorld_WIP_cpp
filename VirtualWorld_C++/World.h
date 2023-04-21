@@ -7,6 +7,7 @@
 #include "Board.h"
 #include "Human.h"
 #include "Speaker.h"
+#include "boardConsts.h"
 #define STARTING_STATE -1
 
 enum GAME_VIEWS { board, dictionary };

@@ -3,14 +3,16 @@
 #include <conio.h>
 #include "Human.h"
 #include "World.h"
-#define ARR_UP 72
-#define ARR_DOWN 80
-#define ARR_LEFT 75
-#define ARR_RIGHT 77
+#include "Buttons.h"
+#include "boardConsts.h"
+using namespace boardConsts;
+using namespace buttons;
+using namespace humanStats;
 Human::Human(int posX, int posY) {
 	this->setAge(STARTING_AGE);
-	this->setStrength(HUMAN_STRENGTH);
-	this->setSymbol(HUMAN_SYMBOL);
+	this->setStrength(STRENGTH);
+	this->setSymbol(SYMBOL);
+	this->setMoveDist(MOVE_DIST);
 	this->setInitiative(-1);
 	this->setPos(posX, posY);
 	this->state = -1;
@@ -40,10 +42,12 @@ void Human::action() {
 		}
 		state = -1;
 		this->setNextPos(next);
-		if (this->getWorld()->getBoard()->getBoardField(this->getNextPos())==nullptr)
-			this->getWorld()->moveAnimalToNextPosition(this);
-		else {
-			this->getWorld()->getBoard()->getBoardField(this->getNextPos())->collision(this);
+		if (this->getWorld()->getBoard()->isPointInBoundaries(this->getNextPos())) {
+			if (this->getWorld()->getBoard()->getBoardField(this->getNextPos()) == nullptr)
+				this->getWorld()->moveAnimalToNextPosition(this);
+			else {
+				this->getWorld()->getBoard()->getBoardField(this->getNextPos())->collision(this);
+			}
 		}
 	}
 }

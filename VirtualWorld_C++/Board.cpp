@@ -1,5 +1,6 @@
 #include "Board.h"
-
+#include "boardConsts.h"
+using namespace boardConsts;
 void Board::buildBoard() {
 	int height = this->sizeY;
 	int width = this->sizeX;
@@ -66,8 +67,8 @@ Point Board::generateRandomNeighboringPosition(const bool needFreePosition, int 
 			break;
 		}
 		if (control == 0b1111) {
-			newPos.x = UNDEFINED;
-			newPos.y = UNDEFINED;
+			newPos.x = UNDEFINED_FIELD;
+			newPos.y = UNDEFINED_FIELD;
 			return newPos;
 		}
 	} while (!this->isPointInBoundaries(newPos) ||

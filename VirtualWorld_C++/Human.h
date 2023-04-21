@@ -1,6 +1,5 @@
 #pragma once
 #include "Animal.h"
-#include "AnimalStats.h"
 #define UNDEFINED -1
 class Human : public Animal {
 private:

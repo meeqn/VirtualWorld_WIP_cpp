@@ -1,11 +1,12 @@
 #include "Guarana.h"
 #include "World.h"
+using namespace guaranaStats;
 
 Guarana::Guarana(int posX, int posY) {
-	this->setPlant(GUARANA_STRENGTH, posX, posY, GUARANA_SYMBOL);
+	this->setPlant(STRENGTH, posX, posY, SYMBOL);
 }
 Organism* Guarana::createChild(Point childPos) const {
-	Organism* child = new Guarana(childPos.x, childPos.y);;
+	Organism* child = static_cast<Organism*>(new Guarana(childPos.x, childPos.y));
 	return child;
 }
 void Guarana::collision(Animal* invader) {

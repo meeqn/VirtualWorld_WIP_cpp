@@ -1,8 +1,10 @@
 #include "Point.h"
-Point::Point() : x(UNDEFINED), y(UNDEFINED) {};
+#include "boardConsts.h"
+using namespace boardConsts;
+Point::Point() : x(UNDEFINED_FIELD), y(UNDEFINED_FIELD) {};
 Point::Point(int x, int y) : x(x), y(y) {};
 bool Point::isUndefined() const{
-	if (this->x == UNDEFINED || this->y == UNDEFINED) {
+	if (this->x == UNDEFINED_FIELD || this->y == UNDEFINED_FIELD) {
 		return true;
 	}
 	else {

@@ -1,32 +1,40 @@
 #pragma once
-//ANIMALS****************
-#define STANDARD_MOVE_DIST 1
-//HUMAN
-#define HUMAN_STRENGTH 5
-#define HUMAN_SYMBOL 'H'
-#define HUMAN_MOVE_DIST STANDARD_MOVE_DIST
-//SHEEP
-#define SHEEP_INITIATIVE 4
-#define SHEEP_STRENGTH 4
-#define SHEEP_SYMBOL 's'
-#define SHEEP_MOVE_DIST STANDARD_MOVE_DIST
-//WOLF
-#define WOLF_INITIATIVE 5
-#define WOLF_STRENGTH 9
-#define WOLF_SYMBOL 'w'
-#define WOLF_MOVE_DIST STANDARD_MOVE_DIST
-//TURTLE
-#define TURTLE_INITIATIVE 1
-#define TURTLE_STRENGTH 2
-#define TURTLE_SYMBOL 't'
-#define TURTLE_MOVE_DIST STANDARD_MOVE_DIST
-//ANTELOPE
-#define ANTELOPE_INITIATIVE 4
-#define ANTELOPE_STRENGTH 4
-#define ANTELOPE_SYMBOL 'a'
-#define ANTELOPE_MOVE_DIST 2
-//FOX
-#define FOX_INITIATIVE 7
-#define FOX_STRENGTH 3
-#define FOX_SYMBOL 'f'
-#define FOX_MOVE_DIST STANDARD_MOVE_DIST
+namespace animalStats {
+	const int STANDARD_MOVE_DIST = 1;
+
+	namespace humanStats {
+		const int STRENGTH = 5;
+		const char SYMBOL = 'H';
+		const int MOVE_DIST = STANDARD_MOVE_DIST;
+	}
+	namespace sheepStats {
+		const int INITIATIVE = 4;
+		const int STRENGTH = 4;
+		const char SYMBOL = 's';
+		const int MOVE_DIST = STANDARD_MOVE_DIST;
+	}
+	namespace wolfStats {
+		const int INITIATIVE = 5;
+		const int STRENGTH = 9;
+		const char SYMBOL = 'w';
+		const int MOVE_DIST = STANDARD_MOVE_DIST;
+	}
+	namespace turtleStats {
+		const int INITIATIVE = 1;
+		const int STRENGTH = 2;
+		const char SYMBOL = 't';
+		const int MOVE_DIST = STANDARD_MOVE_DIST;
+	}
+	namespace antelopeStats {
+		const int INITIATIVE = 4;
+		const int STRENGTH = 4;
+		const char SYMBOL = 'a';
+		const int MOVE_DIST = 2;
+	}
+	namespace foxStats {
+		const int INITIATIVE = 7;
+		const int STRENGTH = 3;
+		const char SYMBOL = 'f';
+		const int MOVE_DIST = STANDARD_MOVE_DIST;
+	}
+}

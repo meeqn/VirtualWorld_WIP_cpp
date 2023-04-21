@@ -1,11 +1,11 @@
 #include "Fox.h"
 #include "World.h"
-
+using namespace foxStats;
 Fox::Fox(int posX, int posY) {
-	this->setAnimal(FOX_INITIATIVE, FOX_STRENGTH, posX, posY, FOX_SYMBOL, FOX_MOVE_DIST);
+	this->setAnimal(INITIATIVE, STRENGTH, posX, posY, SYMBOL, MOVE_DIST);
 }
 Organism* Fox::createChild(Point childPos) const {
-	Organism* animal = new Fox(childPos.x, childPos.y);;
+	Organism* animal = static_cast<Organism*>(new Fox(childPos.x, childPos.y));
 	return animal;
 }
 void Fox::action() {
@@ -23,7 +23,4 @@ void Fox::Write(std::ostream& out) const {
 	out << "a Fox " << this->giveStats();
 }
 Fox::~Fox() {
-	std::cout << "Destroyed a Fox ";
-	this->giveStats();
-	std::cout << "\n";
 }

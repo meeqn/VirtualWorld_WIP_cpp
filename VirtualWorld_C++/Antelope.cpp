@@ -1,10 +1,12 @@
 #include "Antelope.h"
 #include "World.h"
+using namespace antelopeStats;
+
 Antelope::Antelope(int posX, int posY) {
-	this->setAnimal(ANTELOPE_INITIATIVE, ANTELOPE_STRENGTH, posX, posY, ANTELOPE_SYMBOL, ANTELOPE_MOVE_DIST);
+	this->setAnimal(INITIATIVE, STRENGTH, posX, posY, SYMBOL, MOVE_DIST);
 }
 Organism* Antelope::createChild(Point childPos) const {
-	Organism* animal = new Antelope(childPos.x, childPos.y);;
+	Organism* animal = static_cast<Organism*>(new Antelope(childPos.x, childPos.y));
 	return animal;
 }
 void Antelope::collision(Animal* invader) {
@@ -32,7 +34,4 @@ void Antelope::Write(std::ostream& out) const {
 	out << "an Antelope " << this->giveStats();
 }
 Antelope::~Antelope() {
-	std::cout << "Destroyed an Antelope ";
-	this->giveStats();
-	std::cout << "\n";
 }

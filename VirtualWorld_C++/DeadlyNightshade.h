@@ -1,6 +1,5 @@
 #pragma once
 #include "Plant.h"
-#include "PlantStats.h"
 class DeadlyNightshade : public Plant {
 protected:
 	virtual void Write(std::ostream& out) const override;

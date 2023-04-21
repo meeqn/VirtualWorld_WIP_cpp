@@ -1,7 +1,7 @@
 #include "Plant.h"
 #include "World.h"
-void Plant::setSewingDist(int sewingDist) {
-	this->sewingDist = sewingDist;
+void Plant::setSowingDist(int sewingDist) {
+	this->sowingDist = sewingDist;
 }
 void Plant::setPlant(int strength, int posX, int posY, char sym) {
 	this->setStrength(strength);
@@ -11,13 +11,13 @@ void Plant::setPlant(int strength, int posX, int posY, char sym) {
 }
 void Plant::setPlant(int strength, int posX, int posY, char sym, int sewingDist) {
 	Plant::setPlant(strength, posX, posY, sym);
-	this->setSewingDist(sewingDist);
+	this->setSowingDist(sewingDist);
 }
-int Plant::getSewingDist() {
-	return this->sewingDist;
+int Plant::getSowingDist() {
+	return this->sowingDist;
 }
 void Plant::action() {
- 	Point offspringPos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(1, this->getSewingDist(), this);
+ 	Point offspringPos = this->getWorld()->getBoard()->generateRandomNeighboringPosition(1, this->getSowingDist(), this);
 	int prob = (rand() % 100) + 1;
 	if (prob > 80) {
 		if (!offspringPos.isUndefined()) {

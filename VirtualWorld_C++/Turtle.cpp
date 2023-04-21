@@ -1,14 +1,11 @@
 #include "Turtle.h"
 #include "World.h"
-
+using namespace turtleStats;
 Turtle::Turtle(int posX, int posY) {
-	this->setAnimal(TURTLE_INITIATIVE, TURTLE_STRENGTH, posX, posY, TURTLE_SYMBOL, TURTLE_MOVE_DIST);
-	//std::cout << "Created a Turtle ";
-	//this->giveStats();
-	//std::cout << "\n";
+	this->setAnimal(INITIATIVE, STRENGTH, posX, posY, SYMBOL, MOVE_DIST);
 }
 Organism* Turtle::createChild(Point childPos) const {
-	Organism* animal = new Turtle(childPos.x, childPos.y);;
+	Organism* animal = static_cast<Organism*>(new Turtle(childPos.x, childPos.y));
 	return animal;
 }
 void Turtle::action() {
@@ -33,7 +30,4 @@ void Turtle::Write(std::ostream& out) const {
 	out << "a Turtle " << this->giveStats();
 }
 Turtle::~Turtle() {
-	std::cout << "Destroyed a Turtle ";
-	this->giveStats();
-	std::cout << "\n";
 }

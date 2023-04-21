@@ -1,10 +1,11 @@
 #pragma once
 #include "Organism.h"
 #include "PlantStats.h"
+using namespace plantStats;
 class Plant :public Organism {
 private:
-	int sewingDist = SOWING_DISTANCE;
-	void setSewingDist(int sewingDist);
+	int sowingDist = SOWING_DISTANCE;
+	void setSowingDist(int sewingDist);
 
 protected:
 	virtual void Write(std::ostream& out) const = 0;
@@ -15,5 +16,5 @@ protected:
 
 public:
 	virtual void collision(Animal* invader) override;
-	int getSewingDist();
+	int getSowingDist();
 };

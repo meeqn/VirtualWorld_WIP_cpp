@@ -2,11 +2,6 @@
 #include <iostream>
 #include "Point.h"
 #include "Organism.h"
-#define DEFAULT_BOARD_SIZE_X 20
-#define DEFAULT_BOARD_SIZE_Y 20
-#define OUT_OF_BOUNDS -1
-#define BLANK_MAP_SPACE '~'
-#define DIRECTIONS_NUM 4
 class Board {
 enum directions { UP, RIGHT, DOWN, LEFT };
 private:

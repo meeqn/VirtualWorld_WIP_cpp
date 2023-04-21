@@ -1,11 +1,13 @@
 #include "DeadlyNightshade.h"
 #include "World.h"
 
+using namespace deadlyNightshadeStats;
+
 DeadlyNightshade::DeadlyNightshade(int posX, int posY) {
-	this->setPlant(DEADLY_NIGHTSHADE_STRENGTH, posX, posY, DEADLY_NIGHTSHADE_SYMBOL);
+	this->setPlant(STRENGTH, posX, posY, SYMBOL);
 }
 Organism* DeadlyNightshade::createChild(Point childPos) const {
-	Organism* child = new DeadlyNightshade(childPos.x, childPos.y);;
+	Organism* child = static_cast<Organism*>(new DeadlyNightshade(childPos.x, childPos.y));
 	return child;
 }
 void DeadlyNightshade::collision(Animal * invader) {

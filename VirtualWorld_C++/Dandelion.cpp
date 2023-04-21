@@ -1,11 +1,12 @@
 #include "Dandelion.h"
 #include "World.h"
+using namespace dandelionStats;
 
 Dandelion::Dandelion(int posX, int posY) {
-	this->setPlant(DANDELION_STRENGTH, posX, posY, DANDELION_SYMBOL);
+	this->setPlant(STRENGTH, posX, posY, SYMBOL);
 }
 Organism* Dandelion::createChild(Point childPos) const {
-	Organism* child = new Dandelion(childPos.x, childPos.y);;
+	Organism* child = static_cast<Organism*>(new Dandelion(childPos.x, childPos.y));
 	return child;
 }
 void Dandelion::action() {

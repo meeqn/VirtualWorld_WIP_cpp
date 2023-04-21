@@ -166,6 +166,8 @@
     <ClInclude Include="AnimalStats.h" />
     <ClInclude Include="Antelope.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="boardConsts.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="Dandelion.h" />
     <ClInclude Include="DeadlyNightshade.h" />
     <ClInclude Include="Fox.h" />
