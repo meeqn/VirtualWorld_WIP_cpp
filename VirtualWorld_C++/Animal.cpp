@@ -55,6 +55,9 @@ void Animal::collision(Animal* invader) {
 		this->organismGetsAttacked(invader);
 	}
 }
+void Animal::saveOrganism(std::string type, std::string filename, std::ofstream& out) {
+	Organism::saveOrganism("animal", filename, out);
+}
 void Animal::setAnimal(int initiative, int strength, int posX, int posY, char sym, int moveDist) {
 	this->setAge(STARTING_AGE);
 	this->setInitiative(initiative);

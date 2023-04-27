@@ -7,7 +7,7 @@ namespace animalStats {
 	namespace humanStats {
 		const int SKILL_RELOAD_TIME = 5;
 		const int SKILL_DURATION = 5;
-		const int SKILL_BUTTON = buttons::s;
+		const int SKILL_BUTTON = buttons::a;
 		const int INITIATIVE = 4;
 		const int STRENGTH = 5;
 		const char SYMBOL = 'H';

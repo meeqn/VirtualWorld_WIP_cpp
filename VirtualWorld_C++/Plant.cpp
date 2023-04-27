@@ -27,6 +27,9 @@ void Plant::action() {
 		}
 	}
 }
+void Plant::saveOrganism(std::string type, std::string filename, std::ofstream& out) {
+	Organism::saveOrganism("plant", filename, out);
+}
 void Plant::collision(Animal* invader) {
 	this->organismGetsAttacked(invader);
 }

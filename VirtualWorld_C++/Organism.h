@@ -19,7 +19,6 @@ protected:
 	virtual Organism* createChild(Point childPos) const = 0;
 	void organismGetsAttacked(Animal* invader);
 	virtual void action() = 0;
-
 	void setSymbol(char newSymbol);
 	void setWorld(World* newWorld);
 	void setAge(int newAge);
@@ -34,6 +33,7 @@ protected:
 	virtual ~Organism();
 
 public:
+	virtual void saveOrganism(std::string type, std::string filename, std::ofstream& out);
 	virtual void collision(Animal* invader) = 0;
 	void setStrength(int newStrength);
 	World* getWorld() const;

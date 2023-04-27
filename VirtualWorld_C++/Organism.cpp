@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Organism.h"
 #include "World.h"
 
@@ -64,6 +65,11 @@ void Organism::organismGetsAttacked(Animal* invader) {
 		world->moveOrganismToGraveyard(invader);
 		this->getWorld()->sp->addKillMessage(this, invader);
 	}
+}
+void Organism::saveOrganism(std::string type, std::string filename, std::ofstream& out) {
+	std::stringstream buffer;
+	buffer << type << "|" << this->getSymbol() << "|" << this->getPos().x << "|" << this->getPos().y << "|" << this->getAge() << "|" << this->getStrength() << std::endl;
+	out << buffer.str();
 }
 void Organism::activate() {
 	this->active = true;
