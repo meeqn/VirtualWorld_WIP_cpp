@@ -22,7 +22,7 @@ void Turtle::collision(Animal* invader) {
 	{
 		World* world = this->getWorld();
 		if (invader->getStrength() >= 5) {
-			this->animalGetsAttacked(invader);
+			this->organismGetsAttacked(invader);
 		}
 	}
 }

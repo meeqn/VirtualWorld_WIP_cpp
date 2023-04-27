@@ -20,13 +20,6 @@ void World::putOrganismOnBoard(Organism *organism) {
 	this->getBoard()->setBoardField(organism->getPos(), organism);
 }
 
-void World::addPlayer(Human* player) {
-	this->player = player;
-	player->activate();
-	player->setWorld(this);
-	putOrganismOnBoard(player);
-}
-
 //used for adding before simulation
 void World::addOrganismToWorldActive(Organism* organism){
 	this->organismsGroup.push_back(organism);
@@ -60,17 +53,23 @@ void World::moveAnimalToNextPosition(Animal* animal) {
 
 void World::drawTheState() const {
 	this->getBoard()->drawTheBoard();
-	printf("q - symbols dictionary \t esc - quit \nspace - next turn \t arrow keys - move player \n");
+	printf("q - symbols dictionary \t esc - quit \nspace - next turn \t arrow keys - move player \t s - use skill \n");
 	printf("r - logs on/off, logs ON = %d\n", this->logsOn);
+	if (logsOn)
+		this->sp->printMessages();
 }
 
 void World::drawTheSymbolsDictionary() const{
 	system("CLS");
 	printf("q - return \t esc - quit\n\n");
+
 	printf("ANIMALS:\n");
-	printf("\t %c - sheep  %c - wolf  %c - turtle \n \t %c - antelope %c - fox \n", sheepStats::SYMBOL, wolfStats::SYMBOL, turtleStats::SYMBOL, antelopeStats::SYMBOL, foxStats::SYMBOL);
+	printf("\t %c - sheep  %c - wolf  %c - turtle \n \t %c - antelope %c - fox \n", sheepStats::SYMBOL, 
+		wolfStats::SYMBOL, turtleStats::SYMBOL, antelopeStats::SYMBOL, foxStats::SYMBOL);
+
 	printf("PLANTS:\n");
-	printf("\t %c - grass  %c - dandelion %c - guarana \n \t %c - deadly nightshade %c - sosnowski's hogweed \n", grassStats::SYMBOL, dandelionStats::SYMBOL, guaranaStats::SYMBOL, deadlyNightshadeStats::SYMBOL, sosnowskiStats::SYMBOL);
+	printf("\t %c - grass  %c - dandelion %c - guarana \n \t %c - deadly nightshade %c - sosnowski's hogweed \n", grassStats::SYMBOL, dandelionStats::SYMBOL, guaranaStats::SYMBOL,
+		deadlyNightshadeStats::SYMBOL, sosnowskiStats::SYMBOL);
 }
 
 //insertion sort first - initiative, then - strength
@@ -94,27 +93,32 @@ void World::sortOrganisms() {
 }
 void World::nextTurn() { //todo human action separately
 	this->sortOrganisms();
-	if (this->player != nullptr) {
-		if (this->player->isDead()) {
-			this->player->~Human();
-			this->player = nullptr;
-		}
-		else {
-			printf("Your move! \n");
-			this->player->action();
-			system("CLS");
-			this->drawTheState();
-		}
-	}
+
 	for (int i = 0; i < organismsGroup.size(); i++) {
-		if(organismsGroup[i]->isActive())
+		if (organismsGroup[i]->isActive()) {
+			if(organismsGroup[i]->getSymbol() == humanStats::SYMBOL){
+				system("CLS");
+				std::cout << "Your move! ";
+
+				Human* tmpHuman = dynamic_cast<Human*>(organismsGroup[i]);
+				if (tmpHuman->getSkillRemainingTime() > 0)
+					std::cout << "Remaining skill time: " << tmpHuman->getSkillRemainingTime() << std::endl;
+				else if (tmpHuman->getSkillTimeout() > 0)
+					std::cout << "Skill ready in " << tmpHuman->getSkillTimeout() << std::endl;
+				else
+					std::cout << "Skill is ready!" << std::endl;
+
+				this->drawTheState();
+			}
 			organismsGroup[i]->action();
+		}
 
 		organismsGroup[i]->activate();
 		organismsGroup[i]->Ageing();
 	}
 	ridOfTheDead();
 	system("CLS");
+	printf("Press space to continue! \n");
 }
 
 //remove organism from active board and prepare it to be deleted
@@ -134,18 +138,13 @@ void World::startSimulation() {
 			if (this->gameView == GAME_VIEWS::board) {
 				this->sp->clearMessages();
 				this->nextTurn();
-
 				this->drawTheState();
-				if(logsOn)
-					this->sp->printMessages();
 			}
 			break;
 		case q:
 			if (this->gameView == GAME_VIEWS::dictionary) {
 				system("CLS");
 				this->drawTheState();
-				if(logsOn)
-					this->sp->printMessages();
 				this->gameView = GAME_VIEWS::board;
 			}
 			else {
@@ -158,8 +157,6 @@ void World::startSimulation() {
 				logsOn = !logsOn;
 				system("CLS");
 				this->drawTheState();
-				if (logsOn)
-					this->sp->printMessages();
 			}
 			break;
 		case ESC:
@@ -171,10 +168,12 @@ void World::startSimulation() {
 World::World() {
 	this->board = new Board();
 	std::cout << "Constructed a World size " << this->board->sizeY << "x" << this->board->sizeX << std::endl;
+	std::cout << "Press space to start!" << std::endl;
 };
 World::World(int rows, int columns) {
 	this->board = new Board(columns, rows);
 	std::cout << "Constructed a World size " << this->board->sizeY << "x" << this->board->sizeX << std::endl;
+	std::cout << "Press space to start!" << std::endl;
 };
 World::World(int rows, int columns, std::vector<Organism*> orgVec) {
 	this->board = new Board(columns, rows);
@@ -185,12 +184,11 @@ World::World(int rows, int columns, std::vector<Organism*> orgVec) {
 			delete orgVec[i];
 	}
 	std::cout << "Constructed a World size " << this->board->sizeY << "x" << this->board->sizeX << std::endl;
+	std::cout << "Press space to start!" << std::endl;
 }
 World::~World(){
 	this->board->~Board();
 	this->sp->~Speaker();
-	if(this->player!=nullptr)
-		this->player->~Human();
 	for (int i = 0; i < this->organismsGroup.size(); i++)
 		this->organismsGroup[i]->~Organism();
 	std::cout << "Destroyed a World size " << this->board->sizeY << "x" << this->board->sizeX << std::endl;

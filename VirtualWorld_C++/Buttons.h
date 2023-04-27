@@ -8,4 +8,5 @@ namespace buttons {
 	const int ESC = 27;
 	const int q = 113;
 	const int r = 114;
+	const int s = 115;
 }

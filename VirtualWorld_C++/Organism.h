@@ -17,7 +17,7 @@ protected:
 	virtual void Write(std::ostream& out) const = 0;
 	friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 	virtual Organism* createChild(Point childPos) const = 0;
-
+	void organismGetsAttacked(Animal* invader);
 	virtual void action() = 0;
 
 	void setSymbol(char newSymbol);

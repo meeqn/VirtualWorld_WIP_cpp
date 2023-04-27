@@ -45,18 +45,6 @@ void Animal::breed(Animal* secondAnimal) {
 	}
 
 }
-void Animal::animalGetsAttacked(Animal * invader) {
-	World* world = this->getWorld();
-	if (this->getStrength() < invader->getStrength()) { //attacked and loses fight
-		world->moveOrganismToGraveyard(this);
-		world->moveAnimalToNextPosition(invader);
-		this->getWorld()->sp->addKillMessage(invader, this);
-	}
-	else { //defends itself
-		world->moveOrganismToGraveyard(invader);
-		this->getWorld()->sp->addKillMessage(this, invader);
-	}
-}
 void Animal::collision(Animal* invader) {
 
 	if (invader->getSymbol() == this->getSymbol()) {
@@ -64,7 +52,7 @@ void Animal::collision(Animal* invader) {
 	}
 	else
 	{
-		this->animalGetsAttacked(invader);
+		this->organismGetsAttacked(invader);
 	}
 }
 void Animal::setAnimal(int initiative, int strength, int posX, int posY, char sym, int moveDist) {

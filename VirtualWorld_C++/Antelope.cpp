@@ -26,7 +26,7 @@ void Antelope::collision(Animal* invader) {
 			}
 		}
 		else {
-			this->animalGetsAttacked(invader);
+			this->organismGetsAttacked(invader);
 		}
 	}
 }

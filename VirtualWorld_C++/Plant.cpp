@@ -28,16 +28,7 @@ void Plant::action() {
 	}
 }
 void Plant::collision(Animal* invader) {
-	World* world = this->getWorld();
-	if (this->getStrength() < invader->getStrength()) { //attacked and loses fight
-		world->moveOrganismToGraveyard(this);
-		world->moveAnimalToNextPosition(invader);
-		this->getWorld()->sp->addKillMessage(invader, this);
-	}
-	else { //defends itself
-		world->moveOrganismToGraveyard(invader);
-		this->getWorld()->sp->addKillMessage(this, invader);
-	}
+	this->organismGetsAttacked(invader);
 }
 Plant::~Plant() {
 

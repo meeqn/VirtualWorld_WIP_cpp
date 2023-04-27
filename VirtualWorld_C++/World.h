@@ -18,7 +18,6 @@ class World {
 	int state = STARTING_STATE;
 private:
 	Board *board;
-	Human* player = nullptr;
 	std::vector<Organism*> organismsGroup;
 	void putOrganismOnBoard(Organism *organism);
 	void ridOfTheDead();
@@ -36,7 +35,6 @@ public:
 	int getSizeY() const;
 	Board* getBoard() const;
 	
-	void addPlayer(Human* player);
 	void startSimulation();
 	void addOrganismToWorldActive(Organism* organism);
 	void addOrganismToWorldInactive(Organism* organism);

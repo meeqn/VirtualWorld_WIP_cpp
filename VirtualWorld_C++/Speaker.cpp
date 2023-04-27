@@ -27,6 +27,9 @@ void Speaker::addBirthMessage(Animal* parent1, Animal* parent2, Animal* kid) {
 void Speaker::addBirthMessage(Plant* parent, Plant* offspring) {
 	this->buffer << *parent << " created sapling " << *offspring << std::endl;
 };
+void Speaker::addCustomMessage(std::string message) {
+	this->buffer << message << std::endl;
+}
 Speaker::~Speaker() {
 	std::cout << "Destroyed a speaker" << std::endl;
 }

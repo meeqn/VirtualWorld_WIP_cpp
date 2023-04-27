@@ -53,7 +53,18 @@ void Organism::draw() const{
 	printf("%c", this->getSymbol());
 }
 
-//modified
+void Organism::organismGetsAttacked(Animal* invader) {
+	World* world = this->getWorld();
+	if (this->getStrength() < invader->getStrength()) { //attacked and loses fight
+		world->moveOrganismToGraveyard(this);
+		world->moveAnimalToNextPosition(invader);
+		this->getWorld()->sp->addKillMessage(invader, this);
+	}
+	else { //defends itself
+		world->moveOrganismToGraveyard(invader);
+		this->getWorld()->sp->addKillMessage(this, invader);
+	}
+}
 void Organism::activate() {
 	this->active = true;
 }

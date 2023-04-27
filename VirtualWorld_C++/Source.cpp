@@ -24,14 +24,13 @@ vector <Organism*> populateStart() {
 	orgVec.push_back(new Sosnowski(0, 7));
 	orgVec.push_back(new Dandelion(2, 2));
 	orgVec.push_back(new Guarana(9, 9));
+	orgVec.push_back(new Human(5, 5));
 	return orgVec;
 }
 
 int main() {
 	World braveNewWorld(20, 20, populateStart());
-	braveNewWorld.addPlayer(new Human(5, 5));
 	//todo saving/loading
-	//todo maybe namespaces for defines
 	braveNewWorld.startSimulation();
 	return 0;
 }

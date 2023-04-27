@@ -10,7 +10,12 @@ Organism* Guarana::createChild(Point childPos) const {
 	return child;
 }
 void Guarana::collision(Animal* invader) {
-	std::cout << *invader << " ate " << *this << " and got increase in strength!" << std::endl;
+	this->getWorld()->moveOrganismToGraveyard(this);
+	this->getWorld()->moveAnimalToNextPosition(invader);
+	this->getWorld()->sp->addKillMessage(invader, this);
+	std::stringstream buffer;
+	buffer << *invader;
+	this->getWorld()->sp->addCustomMessage(buffer.str()+" ate guarana and got increase in strength!");
 	invader->setStrength(invader->getStrength() + 3);
 }
 void Guarana::Write(std::ostream& out) const {

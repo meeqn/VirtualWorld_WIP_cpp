@@ -13,6 +13,7 @@ public:
 	Speaker();
 	void printMessages();
 	void addCreateMessage(Organism* organism);
+	void addCustomMessage(std::string text);
 	void addDestroyMessage(Organism* organism);
 	void addKillMessage(Organism* killer, Organism* victim);
 	void addBirthMessage(Animal* parent1, Animal* parent2, Animal* kid);

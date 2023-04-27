@@ -1,8 +1,14 @@
 #pragma once
+#include "Buttons.h"
+
 namespace animalStats {
 	const int STANDARD_MOVE_DIST = 1;
 
 	namespace humanStats {
+		const int SKILL_RELOAD_TIME = 5;
+		const int SKILL_DURATION = 5;
+		const int SKILL_BUTTON = buttons::s;
+		const int INITIATIVE = 4;
 		const int STRENGTH = 5;
 		const char SYMBOL = 'H';
 		const int MOVE_DIST = STANDARD_MOVE_DIST;

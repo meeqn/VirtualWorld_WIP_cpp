@@ -15,7 +15,6 @@ protected:
 	virtual void action() override;
 	virtual void breed(Animal* secondAnimal);
 	virtual ~Animal() override;
-	void animalGetsAttacked(Animal *invader);
 public:
 	virtual void collision(Animal* invader) override;
 	Point getNextPos() const;
