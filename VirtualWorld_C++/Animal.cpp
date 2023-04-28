@@ -21,14 +21,15 @@ void Animal::setMoveDist(int dist) {
 
 void Animal::action() {
 	this->setNextPos(this->getWorld()->getBoard()->generateRandomNeighboringPosition(false, this->getMoveDist(), this));
-
-	Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
-	if (nextFieldVal == nullptr)
-		this->getWorld()->moveAnimalToNextPosition(this);
-	else {
-		nextFieldVal->collision(this);
+	if (!this->getNextPos().isUndefined()) {
+		Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
+		if (nextFieldVal == nullptr)
+			this->getWorld()->moveAnimalToNextPosition(this);
+		else {
+			nextFieldVal->collision(this);
+		}
+		this->deactivate();
 	}
-	this->deactivate();
 }
 
 void Animal::breed(Animal* secondAnimal) {
@@ -55,8 +56,8 @@ void Animal::collision(Animal* invader) {
 		this->organismGetsAttacked(invader);
 	}
 }
-void Animal::saveOrganism(std::string type, std::string filename, std::ofstream& out) {
-	Organism::saveOrganism("animal", filename, out);
+void Animal::saveOrganism(std::string type, std::ofstream& out) {
+	Organism::saveOrganism("animal", out);
 }
 void Animal::setAnimal(int initiative, int strength, int posX, int posY, char sym, int moveDist) {
 	this->setAge(STARTING_AGE);

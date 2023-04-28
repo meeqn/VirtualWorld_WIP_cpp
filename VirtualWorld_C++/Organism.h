@@ -33,7 +33,7 @@ protected:
 	virtual ~Organism();
 
 public:
-	virtual void saveOrganism(std::string type, std::string filename, std::ofstream& out);
+	virtual void saveOrganism(std::string type, std::ofstream& out);
 	virtual void collision(Animal* invader) = 0;
 	void setStrength(int newStrength);
 	World* getWorld() const;

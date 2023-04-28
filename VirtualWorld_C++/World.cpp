@@ -9,13 +9,17 @@
 #include "buttons.h"
 #include "AllAnimals.h"
 #include "AllPlants.h"
+
 using namespace buttons;
+
 int World::getSizeX() const {
 	return this->board->sizeX;
 }
+
 int World::getSizeY() const {
 	return this->board->sizeY;
 }
+
 Board* World::getBoard() const{
 	return this->board;
 }
@@ -75,7 +79,7 @@ void World::drawTheSymbolsDictionary() const{
 		deadlyNightshadeStats::SYMBOL, sosnowskiStats::SYMBOL);
 }
 
-//insertion sort first - initiative, then - strength
+//insertion sort: first - initiative, then - strength
 void World::sortOrganisms() {
 	int i, j, n = organismsGroup.size();
 	Organism* keyOrganism;
@@ -94,6 +98,7 @@ void World::sortOrganisms() {
 		organismsGroup[j + 1] = keyOrganism;
 	}
 }
+
 void World::nextTurn() { //todo human action separately
 	this->sortOrganisms();
 
@@ -141,11 +146,12 @@ void World::saving() {
 	std::ofstream out(filename);
 	out << buffer.str();
 	for (int i = 0; i < organismsGroup.size(); i++) {
-		organismsGroup[i]->saveOrganism("", filename, out);
+		organismsGroup[i]->saveOrganism("", out);
 	}
 	out.close();
 
 }
+
 void World::setStatsFromStream(std::string stream, int *posX, int *posY, int *strength, int *age, char* sym) {
 	std::string tmpString;
 	std::stringstream ld(stream);
@@ -172,15 +178,52 @@ void World::setStatsFromStream(std::string stream, int *posX, int *posY, int *st
 		i++;
 	}
 }
+Human* World::loadHuman(std::string stream) {
+	int posX, posY, strength, age, skillTimeout, skillRemainingTime;
+	std::string tmpString;
+	std::stringstream ld(stream);
+	std::getline(ld, tmpString, '|');
+	int i = 0;
+	while (std::getline(ld, tmpString, '|')) {
+		switch (i) {
+		case 0:
+			posX = stoi(tmpString);
+			break;
+		case 1:
+			posY = stoi(tmpString);
+			break;
+		case 2:
+			age = stoi(tmpString);
+			break;
+		case 3:
+			strength = stoi(tmpString);
+			break;
+		case 4:
+			skillRemainingTime = stoi(tmpString);
+			break;
+		case 5:
+			skillTimeout = stoi(tmpString);
+			break;
+		}
+		i++;
+	}
+	Human* loaded = new Human(posX, posY);
+	loaded->setSkillRemainingTime(skillRemainingTime);
+	loaded->setSkillTimeout(skillTimeout);
+	loaded->setStrength(strength);
+	if (skillRemainingTime == 0 && skillTimeout > 0)
+		loaded->setSkillReady(false);
+	else if (skillRemainingTime > 0)
+		loaded->setSkillReady(true);
+
+	return loaded;
+}
 Animal* World::loadAnimal(std::string stream) {
 	int posX, posY, strength, age;
 	char sym;
 	this->setStatsFromStream(stream, &posX, &posY, &strength, &age, &sym);
 	Animal* loaded = nullptr;
 	switch (sym) {
-		case humanStats::SYMBOL:
-			loaded = new Human(posX, posY);
-			break;
 		case antelopeStats::SYMBOL:
 			loaded = new Antelope(posX, posY);
 			break;
@@ -201,6 +244,7 @@ Animal* World::loadAnimal(std::string stream) {
 	loaded->setStrength(strength);
 	return loaded;
 }
+
 Plant* World::loadPlant(std::string stream) {
 	int posX, posY, strength, age;
 	char sym;
@@ -227,6 +271,7 @@ Plant* World::loadPlant(std::string stream) {
 	loaded->setStrength(strength);
 	return loaded;
 }
+
 void World::loading() {
 	this->board->~Board();
 	this->sp->clearMessages();
@@ -261,6 +306,9 @@ void World::loading() {
 		}
 		else if (tmpString == "plant") {
 			this->addOrganismToWorldActive(this->loadPlant(str));
+		}
+		else if (tmpString == "human") {
+			this->addOrganismToWorldActive(this->loadHuman(str));
 		}
 	}
 	this->drawTheState();
@@ -309,6 +357,8 @@ void World::startSimulation() {
 		}
 	} while (!this->exit);
 }
+
+
 World::World() {
 	this->board = new Board();
 	std::cout << "Constructed a World size " << this->board->sizeY << "x" << this->board->sizeX << std::endl;

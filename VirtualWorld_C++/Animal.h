@@ -16,7 +16,7 @@ protected:
 	virtual void breed(Animal* secondAnimal);
 	virtual ~Animal() override;
 public:
-	void saveOrganism(std::string type, std::string filename, std::ofstream& out) override;
+	virtual void saveOrganism(std::string type, std::ofstream& out) override;
 	virtual void collision(Animal* invader) override;
 	Point getNextPos() const;
 	int getMoveDist() const;

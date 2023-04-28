@@ -23,12 +23,14 @@ void Plant::action() {
 		if (!offspringPos.isUndefined()) {
 			Organism* sapling = this->createChild(offspringPos);
 			this->getWorld()->addOrganismToWorldInactive(sapling);
+
+			//uncomment to show plant birth logs
 			//this->getWorld()->sp->addBirthMessage(this, (Plant*)sapling);
 		}
 	}
 }
-void Plant::saveOrganism(std::string type, std::string filename, std::ofstream& out) {
-	Organism::saveOrganism("plant", filename, out);
+void Plant::saveOrganism(std::string type, std::ofstream& out) {
+	Organism::saveOrganism("plant", out);
 }
 void Plant::collision(Animal* invader) {
 	this->organismGetsAttacked(invader);

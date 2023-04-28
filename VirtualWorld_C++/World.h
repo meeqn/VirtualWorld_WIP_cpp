@@ -28,6 +28,7 @@ private:
 	void loading();
 	Animal* loadAnimal(std::string stream);
 	Plant* loadPlant(std::string stream);
+	Human* loadHuman(std::string stream);
 	void setStatsFromStream(std::string stream, int* posX, int* posY, int* strength, int*age, char* sym);
 public:
 	Speaker* sp = new Speaker();

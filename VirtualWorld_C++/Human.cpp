@@ -23,6 +23,12 @@ int Human::getSkillRemainingTime() {
 int Human::getSkillTimeout() {
 	return this->skillTimeout;
 }
+void Human::setSkillRemainingTime(int remainingTime){
+	this->skillRemainingTurns = remainingTime;
+}
+void Human::setSkillTimeout(int timeout) {
+	this->skillTimeout = timeout;
+}
 Organism* Human::createChild(Point childPos) const {
 	return nullptr;
 }
@@ -57,16 +63,19 @@ void Human::useSkill() {
 		point.move(-x[i], -y[i], 1);
 	}
 }
+void Human::setSkillReady(bool isSkillReady) {
+	this->skillActive = isSkillReady;
+}
 void Human::action() {
 
 	this->skillTurnPass();
 
 	this->state = _getch();
 
-	if (this->state == humanStats::SKILL_BUTTON && this->skillTimeout == 0) {
+	if (this->state == SKILL_BUTTON && this->skillTimeout == 0) {
 		this->skillActive = true;
-		this->skillRemainingTurns = humanStats::SKILL_DURATION;
-		this->skillTimeout = humanStats::SKILL_RELOAD_TIME;
+		this->skillRemainingTurns = SKILL_DURATION;
+		this->skillTimeout = SKILL_RELOAD_TIME;
 		printf("Human used skill!\n");
 		this->state = _getch();
 	}
@@ -109,12 +118,17 @@ void Human::action() {
 		}
 	}
 }
+void Human::saveOrganism(std::string type, std::ofstream& out) {
+	std::stringstream buffer;
+	buffer << "human" << "|" << this->getPos().x << "|" << this->getPos().y << "|" << this->getAge() << "|" << this->getStrength() << "|" << this->getSkillRemainingTime() << "|" << this->getSkillTimeout() << std::endl;
+	out << buffer.str();
+}
 void Human::Write(std::ostream& out) const {
 	out << "a Human " << this->giveStats();
 }
 void Human::collision(Animal* invader) {
 	if(!this->skillActive)
-		this->Animal::collision(invader);
+		Animal::collision(invader);
 	else {
 		this->useSkill();
 	}

@@ -10,14 +10,15 @@ Organism* Fox::createChild(Point childPos) const {
 }
 void Fox::action() {
 	this->setNextPos(this->getWorld()->getBoard()->generateRandomNeighboringPosition(true, this->getMoveDist(), this)); // <- fox looks until it finds free position
-
-	Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
-	if (nextFieldVal == nullptr)
-		this->getWorld()->moveAnimalToNextPosition(this);
-	else if(nextFieldVal->getSymbol()==this->getSymbol() || nextFieldVal->getStrength()<=this->getStrength()){
-		nextFieldVal->collision(this);
+	if (!this->getNextPos().isUndefined()) {
+		Organism* nextFieldVal = this->getWorld()->getBoard()->getBoardField(this->getNextPos());
+		if (nextFieldVal == nullptr)
+			this->getWorld()->moveAnimalToNextPosition(this);
+		else if (nextFieldVal->getSymbol() == this->getSymbol() || nextFieldVal->getStrength() <= this->getStrength()) {
+			nextFieldVal->collision(this);
+		}
+		this->deactivate();
 	}
-	this->deactivate();
 }
 void Fox::Write(std::ostream& out) const {
 	out << "a Fox " << this->giveStats();
