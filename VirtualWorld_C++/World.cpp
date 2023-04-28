@@ -372,7 +372,7 @@ World::World(int rows, int columns) {
 World::World(int rows, int columns, std::vector<Organism*> orgVec) {
 	this->board = new Board(columns, rows);
 	for (int i = 0; i < orgVec.size(); i++) {
-		if (this->getBoard()->getBoardField(orgVec[i]->getPos()) == nullptr)
+		if (this->getBoard()->getBoardField(orgVec[i]->getPos()) == nullptr && this->getBoard()->isPointInBoundaries(orgVec[i]->getPos() ))
 			this->addOrganismToWorldActive(orgVec[i]);
 		else
 			delete orgVec[i];
